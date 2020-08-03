@@ -86,14 +86,15 @@ const loginGoogle = async(req, res = response) => {
 const renewToken = async(req, res = response) => {
 
     const id = req.id;
+    const usuarioDB = await Usuario.findById(id);
 
     const token = await generarJWT(id);
 
     res.json({
         ok: true,
-        id,
+        usuario: usuarioDB,
         token
-    })
+    });
 }
 
 module.exports = {
