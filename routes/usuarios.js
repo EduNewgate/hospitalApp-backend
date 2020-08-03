@@ -10,9 +10,8 @@ const router = Router();
     /api/usuarios
 */
 
-router.get('/', validarJWT, getUsuarios);
+router.get('/', getUsuarios);
 router.post('/', [
-    validarJWT,
     check('nombre', 'El nombre es obligatorio.').not().isEmpty(),
     check('password', 'La contraseña es obligatoria.').not().isEmpty(),
     check('email', 'El email es obligatorio.').not().isEmpty(),
